@@ -1,6 +1,7 @@
 # Kafka Management Console
 This is a single page web application that should help manage kafka clusters. To avoid constantly having to execute CLI commands I have built this interface. For now it is a friday night project that barely sports enough functionality to support my own use case. Maybe I will expand on it in the future, or make it look less ugly :).
 
+![alt text](https://raw.githubusercontent.com/langens-jonathan/kafka-management-console/master/screenshots/kafka-management-console-alpha.png "The KMC in action.")
 
 
 ## Current state
