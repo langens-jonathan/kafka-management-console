@@ -1,0 +1,127 @@
+{{#paper-sidenav-container class="inner-sidenav"}}
+
+    {{#paper-sidenav
+       class="md-whiteframe-z2"
+       name="left"
+       open=leftSideBarOpen
+       onToggle=(action (mut leftSideBarOpen))}}
+        {{#paper-toolbar as |toolbar|}}
+            {{#paper-toolbar-tools}}TOPICS{{/paper-toolbar-tools}}
+        {{/paper-toolbar}}
+        {{#paper-content padding=true}}
+            <ul style="padding:0; margin: 5px; float:left; display: block;">
+                {{#each topics as |topic|}}
+                    <li>{{#paper-button raised=true onClick=(action "selectTopic" topic)}}{{topic.name}}{{/paper-button}}</li>
+                {{/each}}
+                <br /><br />
+                <li>{{#paper-button raised=true primary=true}}+{{/paper-button}}</li>
+            </ul>
+        {{/paper-content}}
+    {{/paper-sidenav}}
+    <div class="content" >
+    {{#paper-card-content class="flex"}}
+        {{#paper-toolbar}}
+            {{#paper-toolbar-tools}}
+                {{#paper-button iconButton=true}}
+                    {{paper-icon "menu"}}
+                {{/paper-button}}
+                <h2>
+                    {{activeTopic}}
+                </h2>
+            {{/paper-toolbar-tools}}
+        {{/paper-toolbar}}
+
+        <div style="height: 500px; position: absolute; margin: auto;">
+            {{outlet}}
+            <div style="position: absolute; width:1250px; padding: 4px;">
+                <table style="margin: auto; width: 1100px; display:block;"><tr><td>
+                    {{paper-input label="Message" value=inputMessage onChange=(action (mut inputMessage))}}</td><td>
+                    {{#paper-button raised=true primary=true onClick=(action "sendMessage")}}send message{{/paper-button}}</td></tr>
+                </table>
+
+                <div style="width: 1105; display:block; margin: auto;">
+                    {{#paper-list}}
+                        {{#paper-subheader}}messages{{/paper-subheader}}
+                        <table id="customers">
+                            <tr><th>offset</th><th>key</th><th>value</th></tr>
+                            {{#each messages as |message|}}
+                                <tr><td>{{message.offset}}</td><td>{{message.key}}</td><td>{{message.value}}</td></tr>
+                                <!-- {{#paper-subheader}}offset: {{message.offset}}{{/paper-subheader}}
+                                     {{#paper-item class="md-3-line" style="background-color:#bb5;"}}
+
+                                     {{#paper-card as |card|}}
+                                     {{#text.headline}}{{message.value}}{{/text.headline}}
+                                     {{#text.subhead}}{{message.key}}{{/text.subhead}}
+                                     {{/paper-card}}
+                                     <div class="md-list-item-text">
+                                     <h4>key: {{message.key}}</h4>
+                                     <h2>{{message.value}}</h2>
+                                     </div>
+                                     {{paper-divider}}
+                                     {{/paper-item}} -->
+                                {{paper-divider}}
+                            {{/each}}
+                        </table>
+                    {{/paper-list}}
+                </div>
+                <div style="width: 1100px; display:block; margin: auto;">
+                    {{#paper-list}}
+                        {{#paper-subheader}}Partitions{{/paper-subheader}}
+                        <table><tr><td>PartitionNr</td><td>{{activePIPartitionNr}}</td></tr></table>
+                        {{paper-divider}}
+                        {{#paper-subheader}}Leader{{/paper-subheader}}
+                            {{#paper-item class="md-3-line"}}
+                                <div class="bottom-card">
+                                    <h3>id: {{activePILeader.id}}</h3>
+                                    <h3>host: {{activePILeader.host}}</h3>
+                                    <h3>port: {{activePILeader.port}}</h3>
+                                </div>
+                            {{/paper-item}}
+                        {{paper-divider}}
+
+                        {{#paper-subheader}}Replicas{{/paper-subheader}}
+                        {{#each activePIReplicas as |replica|}}
+                            {{#paper-item class="md-3-line"}}
+                                <div class="bottom-card" >
+                                    <h3>id: {{replica.id}}</h3>
+                                    <h3>host: {{replica.host}}</h3>
+                                    <h3>port: {{replica.port}}</h3>
+                                </div>
+                            {{/paper-item}}
+                        {{/each}}
+                        {{paper-divider}}
+
+
+                        {{#paper-subheader}}In Sync Replicas{{/paper-subheader}}
+                        {{#each activePIISReplicas as |replica|}}
+                            {{#paper-item class="md-3-line"}}
+                                <div class="bottom-card" >
+                                    <h3>id: {{replica.id}}</h3>
+                                    <h3>host: {{replica.host}}</h3>
+                                    <h3>port: {{replica.port}}</h3>
+                                </div>
+                            {{/paper-item}}
+                        {{/each}}
+                        {{paper-divider}}
+
+                        {{#paper-subheader}}Offline Replicas{{/paper-subheader}}
+                        {{#each activePIOfflineReplicas as |replica|}}
+                            {{#paper-subheader}}123{{/paper-subheader}}
+                            {{#paper-item class="md-3-line"}}
+                                <img src={{item.img}} alt={{item.name}} class="md-avatar">
+                                <div class="md-list-item-text">
+                                    <h3>id: {{replica.id}}</h3>
+                                    <h3>host: {{replica.host}}</h3>
+                                    <h3>port: {{replica.port}}</h3>
+                                </div>
+                            {{/paper-item}}
+                        {{/each}}
+                        {{paper-divider}}
+
+                    {{/paper-list}}
+                </div>
+            </div>
+        </div>
+    {{/paper-card-content}}
+    </div>
+{{/paper-sidenav-container}}

@@ -1,0 +1,4 @@
+kmc-frontend/node_modules
+kmc-frontend/vendor
+kmc-backend/target
+*.iml

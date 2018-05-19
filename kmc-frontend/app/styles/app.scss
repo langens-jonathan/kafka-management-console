@@ -1,0 +1,83 @@
+@import 'ember-paper';
+$primary: "pink";
+$accent: "light-green";
+$warn: "teal";
+
+body {
+    background-color: #151f29;
+    color: #eee;
+}
+
+md-content.md-default-theme, md-content {
+    background-color: #6a737d;
+}
+
+md-input-container.md-default-theme .md-input, md-input-container .md-input {
+    color: #fff;
+}
+
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label, md-input-container:not(.md-input-invalid).md-input-has-value label {
+   color: rgba(237, 237, 237, 0.5);
+                                                                                     }
+
+.md-subheader .md-subheader-content {
+    color: rgba(237, 237, 237, 0.5);
+}
+
+.bottom-card {
+    background-color: #5eb55b;
+}
+
+md-sidenav.md-locked-open, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-right {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 260px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    display: block;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #6a737d; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 0px;
+}
+
+.content {
+    position: absolute;
+    left: 260px;
+    padding: 0px;
+}
+
+.md-toolbar-tools {
+    background-color: #333;
+    color: #ddd;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+    width:1250px;
+}
+
+.md-button.md-default-theme.md-primary.md-raised {
+    background-color: #b73999;
+}
+
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){color: gray; background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4078c0;
+    color: white;
+}

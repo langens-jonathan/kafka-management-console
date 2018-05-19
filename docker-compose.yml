@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  frontend:
+    build: ./kmc-frontend
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    links:
+      - backend:backend
+
+  backend:
+    build: ./kmc-backend
+    environment:
+      - "KAFKA_URL_LIST=192.168.0.121:9092"
+      - "KAFKA_CLIENT_ID=1"
+    ports:
+      - "8888:8080"
